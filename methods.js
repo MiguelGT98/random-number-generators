@@ -60,3 +60,15 @@ const linearCongruentialMethodGenerator = (previous, a, c, m) => {
 
 /* Example usage */
 /* linearCongruentialMethod(4, 5, 7, 8, 8)); */
+
+const multiplicativeCongruentialMethod = (a, xi, m, n) => {
+  const randomNumbers = [];
+  for (i = 0; i < n; i++) {
+    let xn = (a * xi) % m;
+    xi = xn;
+    randomNumbers.push(xn / (m - 1));
+  }
+  return randomNumbers
+};
+
+// console.log(multiplicativeCongruentialMethod(515, 2657, 34359738368, 100));
