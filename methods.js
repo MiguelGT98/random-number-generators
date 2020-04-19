@@ -221,7 +221,7 @@ function gammq(n, x) {
 }
 
 function gser(n, x) {
-    var eps = 1. e - 6;
+    var eps = 1.e-6;
     var gln = gamnln(n);
     var a = 0.5 * n;
     var ap = a;
@@ -237,11 +237,11 @@ function gser(n, x) {
 }
 
 function gcf(n, x) {
-    var eps = 1. e - 6;
+    var eps = 1.e-6;
     var gln = gamnln(n);
     var a = 0.5 * n;
     var b = x + 1 - a;
-    var fpmin = 1. e - 300;
+    var fpmin = 1.e-300;
     var c = 1 / fpmin;
     var d = 1 / b;
     var h = d;
@@ -310,32 +310,23 @@ const ksTest = (sampleData, alpha) => {
     sampleData.sort(function(a, b) { return a - b });
 
     // Define all the arrays for the calculation table
-    var avgPerPosition = Array(n);
-    var dPlus = Array(n);
-    var dMinus = Array(n);
+    var avgPerPosition = Array();
+    var dPlus = Array();
+    var dMinus = Array();
 
     // Maximum values inside arrays for comparing the final max value with the critic value
     var dPlusMax;
     var dMinusMax;
     var finalMax;
 
-    // Detection for missing data and stopping the test
-    var error = 0;
-
     for (i = 0; i < n; i++) {
-        if ((!isNaN(parseFloat(sampleData[i].value)))) {
+        if (isNaN(parseFloat(sampleData[i]))) {
             alert("Data entry error");
-            e++;
             return false;
         }
-        avgPerPosition.push(parseFloat(i + 1 / sampleData[i].value));
-        dPlus.push(avgPerPosition[i] - sampleData[i].value);
-        dMinus.push(sampleData[i].value - i / sampleData[i].value);
-    }
-
-    if (e > 0) {
-        alert("Data entry error");
-        return false;
+        avgPerPosition.push((i + 1) / n);
+        dPlus.push(avgPerPosition[i] - parseFloat(sampleData[i]));
+        dMinus.push(parseFloat(sampleData[i]) - (i / n));
     }
 
     dPlusMax = Math.max(...dPlus);
@@ -344,10 +335,15 @@ const ksTest = (sampleData, alpha) => {
     finalMax = Math.max(dPlusMax, dMinusMax);
 
     if (finalMax <= criticValue) {
-        print("The hypothesis is not rejected, since " + finalMax + " is less or equal than the critic value " + criticValue);
+        console.log("The hypothesis is not rejected, since " + finalMax + " is less or equal than the critic value " + criticValue);
         return true;
     } else {
-        print("The hypothesis is rejected, since " + finalMax + " is higher than the critic value " + criticValue);
+        console.log("The hypothesis is rejected, since " + finalMax + " is higher than the critic value " + criticValue);
         return false;
     }
-}; //function closing
+};
+
+/* Example usage */
+/* ksTest([5, 5, 6, 9], 0.05); */
+
+/* Combined Linear Congruential Method */
