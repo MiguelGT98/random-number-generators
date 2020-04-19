@@ -70,7 +70,21 @@ function generateRandomds(method) {
       c = parseInt(form.elements.namedItem("c").value);
       m = parseInt(form.elements.namedItem("m").value);
       n = parseInt(form.elements.namedItem("numbers").value);
+
       randomNumbers = linearCongruentialMethod(x0, a, c, m, n);
+      alpha = form.elements.namedItem("alpha").value;
+
+      if (ksTest(randomNumbers, alpha)) {
+        form.elements.namedItem("ks").classList.add("correct");
+      } else {
+        form.elements.namedItem("ks").classList.add("incorrect");
+      }
+
+      if (chiSquareTest(randomNumbers, alpha)) {
+        form.elements.namedItem("chi").classList.add("correct");
+      } else {
+        form.elements.namedItem("chi").classList.add("incorrect");
+      }
       break;
     case "congruencialMixto":
       form = document.getElementById("congruencialMixtoForm");
@@ -80,9 +94,22 @@ function generateRandomds(method) {
       m = parseInt(form.elements.namedItem("m").value);
       n = parseInt(form.elements.namedItem("numbers").value);
       randomNumbers = mixedLinearCongruentialMethod(x0, a, c, m, n);
+      alpha = form.elements.namedItem("alpha").value;
       if (randomNumbers == -1) {
         randomNumbers = [];
         alert("No cumple HullDobell");
+      } else {
+        if (ksTest(randomNumbers, alpha)) {
+          form.elements.namedItem("ks").classList.add("correct");
+        } else {
+          form.elements.namedItem("ks").classList.add("incorrect");
+        }
+
+        if (chiSquareTest(randomNumbers, alpha)) {
+          form.elements.namedItem("chi").classList.add("correct");
+        } else {
+          form.elements.namedItem("chi").classList.add("incorrect");
+        }
       }
 
       break;
@@ -90,8 +117,22 @@ function generateRandomds(method) {
       form = document.getElementById("multiplicativoForm");
       x0 = parseInt(form.elements.namedItem("x0").value);
       a = parseInt(form.elements.namedItem("a").value);
+      m = parseInt(form.elements.namedItem("m").value);
       n = parseInt(form.elements.namedItem("numbers").value);
+      alpha = form.elements.namedItem("alpha").value;
       randomNumbers = multiplicativeCongruentialMethod(x0, a, m, n);
+      if (ksTest(randomNumbers, alpha)) {
+        form.elements.namedItem("ks").classList.add("correct");
+      } else {
+        form.elements.namedItem("ks").classList.add("incorrect");
+      }
+
+      if (chiSquareTest(randomNumbers, alpha)) {
+        form.elements.namedItem("chi").classList.add("correct");
+      } else {
+        form.elements.namedItem("chi").classList.add("incorrect");
+      }
+
       break;
     case "congruencialLineal":
       form = document.getElementById("congruencialLinealForm");
@@ -111,11 +152,10 @@ function generateRandomds(method) {
         { parameters: { seed: x0, a: a, c: c, m: m } },
         { parameters: { seed: x02, a: a2, c: c2, m: m2 } },
       ];
-      console.log(combinedLinearCongruentialMethod(g, n, n2));
       randomNumbers = combinedLinearCongruentialMethod(g, n, n2);
       break;
   }
-  console.log(randomNumbers);
+  //console.log(randomNumbers);
   let htmlString = "";
   for (let n of randomNumbers) {
     htmlString = `${htmlString}<span>${n.toFixed(5)}</span>`;

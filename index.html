@@ -43,57 +43,97 @@
     <a id="congruencialLineal" onclick="set('congruencialLineal')">Congruencial lineal Combinado</a>
   </div>
   <form id="centrosCuadradosForm" onsubmit="return generateRandomds('centrosCuadrados')">
-    <input type="number" name="x0" placeholder="Valor Inicial">
-    <input type="number" name="numbers" required placeholder="Cuantos numeros random requieres">
-    <input id="submit" type="submit" required value="Generar" >
+    <input type="number" min="999" max="9999" name="x0" required placeholder="Valor Inicial">
+    <input type="number" min="0" name="numbers" required placeholder="Cuantos numeros random requieres">
+
+    <input id="submit" type="submit" required value="Generar">
   </form>
   <form id="congruencialForm" onsubmit="return generateRandomds('congruencial')">
     <div class="flex container">
-      <input type="number" class="quarter" required name="x0" placeholder="Valor Inicial">
-      <input type="number" class="quarter" required name="a" placeholder="A">
-      <input type="number" class="quarter" required name="c" placeholder="C">
-      <input type="number" class="quarter" required name="m" placeholder="M">
+      <input type="number" min="0" class="quarter" required name="x0" placeholder="Valor Inicial">
+      <input type="number" min="0" class="quarter" required name="a" placeholder="A">
+      <input type="number" min="0" class="quarter" required name="c" placeholder="C">
+      <input type="number" min="0" class="quarter" required name="m" placeholder="M">
     </div>
-    <input type="number" name="numbers" required placeholder="Cuantos numeros random requieres">
+    <input type="number" min="0" name="numbers" required placeholder="Cuantos numeros random requieres">
+    <div class="flex container">
+      <select class="third" name="alpha">
+        <option value="0.001">0.001</option>
+        <option value="0.01">0.01</option>
+        <option value="0.02">0.02</option>
+        <option selected="selected" value="0.05">0.05</option>
+        <option value="0.1">0.1</option>
+        <option value="0.15">0.15</option>
+        <option value="0.2">0.2</option>
+      </select>
+      <input class="third" disabled name="chi" value="Prueba Chi">
+      <input class="third" disabled name="ks" value="Prueba KS">
+    </div>
     <input id="submit" type="submit" value="Generar">
   </form>
   <form id="congruencialMixtoForm" onsubmit="return generateRandomds('congruencialMixto')">
     <div class="flex container">
-      <input type="number" class="quarter" required name="x0" placeholder="Valor Inicial">
-      <input type="number" class="quarter" required name="a" placeholder="A">
-      <input type="number" class="quarter" required name="c" placeholder="C">
-      <input type="number" class="quarter" required name="m" placeholder="M">
+      <input type="number" min="0" class="quarter" required name="x0" placeholder="Valor Inicial">
+      <input type="number" min="0" class="quarter" required name="a" placeholder="A">
+      <input type="number" min="0" class="quarter" required name="c" placeholder="C">
+      <input type="number" min="0" class="quarter" required name="m" placeholder="M">
     </div>
-    <input type="number" name="numbers" placeholder="Cuantos numeros random requieres">
+    <input type="number" min="0" name="numbers" placeholder="Cuantos numeros random requieres">
+    <div class="flex container">
+      <select class="third" name="alpha">
+        <option value="0.001">0.001</option>
+        <option value="0.01">0.01</option>
+        <option value="0.02">0.02</option>
+        <option selected="selected" value="0.05">0.05</option>
+        <option value="0.1">0.1</option>
+        <option value="0.15">0.15</option>
+        <option value="0.2">0.2</option>
+      </select>
+      <input class="third" disabled name="chi" value="Prueba Chi">
+      <input class="third" disabled name="ks" value="Prueba KS">
+    </div>
     <input id="submit" type="submit" value="Generar">
   </form>
   <form id="multiplicativoForm" onsubmit="return generateRandomds('multiplicativo')">
-    <div class="flex container" >
-      <input type="number" class="third" required name="x0" placeholder="Valor Inicial">
-      <input type="number" class="third" required name="a" placeholder="A">
-      <input type="number" class="third" required name="m" placeholder="M">
+    <div class="flex container">
+      <input type="number" min="0" class="third" required name="x0" placeholder="Valor Inicial">
+      <input type="number" min="0" class="third" required name="a" placeholder="A">
+      <input type="number" min="0" class="third" required name="m" placeholder="M">
     </div>
-    <input type="number" name="numbers" placeholder="Cuantos numeros random requieres">
+    <input type="number" min="0" name="numbers" placeholder="Cuantos numeros random requieres">
+    <div class="flex container">
+      <select class="third" name="alpha">
+        <option value="0.001">0.001</option>
+        <option value="0.01">0.01</option>
+        <option value="0.02">0.02</option>
+        <option selected="selected" value="0.05">0.05</option>
+        <option value="0.1">0.1</option>
+        <option value="0.15">0.15</option>
+        <option value="0.2">0.2</option>
+      </select>
+      <input class="third" disabled name="chi" value="Prueba Chi">
+      <input class="third" disabled name="ks" value="Prueba KS">
+    </div>
     <input id="submit" type="submit" value="Generar">
   </form>
-  <form id="congruencialLinealForm"  onsubmit="return generateRandomds('congruencialLineal')">
+  <form id="congruencialLinealForm" onsubmit="return generateRandomds('congruencialLineal')">
     <p>Generador 1</p>
     <div class="flex container">
-      <input type="number" class="quarter" required name="x0" placeholder="Valor Inicial">
-      <input type="number" class="quarter" required name="a" placeholder="A">
-      <input type="number" class="quarter" required name="c" placeholder="C">
-      <input type="number" class="quarter" required name="m" placeholder="M">
+      <input type="number" min="0" class="quarter" required name="x0" placeholder="Valor Inicial">
+      <input type="number" min="0" class="quarter" required name="a" placeholder="A">
+      <input type="number" min="0" class="quarter" required name="c" placeholder="C">
+      <input type="number" min="0" class="quarter" required name="m" placeholder="M">
     </div>
-    <input type="number" name="numbers2" placeholder="Cuantos numeros random requieres">
+    <input type="number" min="0" name="numbers" placeholder="Cuantos numeros random requieres">
 
     <p>Generador 2</p>
     <div class="flex container">
-      <input type="number" class="quarter" required name="x02" placeholder="Valor Inicial">
-      <input type="number" class="quarter" required name="a2" placeholder="A">
-      <input type="number" class="quarter" required name="c2" placeholder="C">
-      <input type="number" class="quarter" required name="m2" placeholder="M">
+      <input type="number" min="0" class="quarter" required name="x02" placeholder="Valor Inicial">
+      <input type="number" min="0" class="quarter" required name="a2" placeholder="A">
+      <input type="number" min="0" class="quarter" required name="c2" placeholder="C">
+      <input type="number" min="0" class="quarter" required name="m2" placeholder="M">
     </div>
-    <input type="number" name="numbers" placeholder="Cuantos numeros random requieres">
+    <input type="number" min="0" name="numbers2" placeholder="Tercer MOD">
     <input id="submit" type="submit" value="Generar">
   </form>
 
