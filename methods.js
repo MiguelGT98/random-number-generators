@@ -68,7 +68,7 @@ const multiplicativeCongruentialMethod = (xi, a, m, n) => {
   for (i = 0; i < n; i++) {
     let xn = (a * xi) % m;
     xi = xn;
-    randomNumbers.push(xn / (m - 1));
+    randomNumbers.push(xn / m);
   }
   return randomNumbers;
 };
