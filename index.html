@@ -1,11 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>SIMULADOR DE NUMEROS RANDOM</title>
-    <script src="methods.js"></script>
-  </head>
-  <body></body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>SIMULADOR DE NUMEROS RANDOM</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="methods.js"></script>
+  <script src="gui.js"></script>
+</head>
+<header>
+  <h1>SIMULADOR DE NUMEROS RANDOM</h1>
+
+</header>
+
+<body>
+  <div class="names">
+    <div>
+      <p>José Miguel Gallardo Tabares</p>
+      <p>A01336430</p>
+    </div>
+    <div>
+      <p>Ricardo Andrés Aldama González</p>
+      <p>A01337569</p>
+    </div>
+    <div>
+      <p>José Alejandro Muñoz Orozco</p>
+      <p>A01337343</p>
+    </div>
+    <div>
+      <p>Carlos Aguirre Orozco</p>
+      <p>A01336319</p>
+    </div>
+  </div>
+  <div class="flex">
+    <a id="centrosCuadrados" onclick="set('centrosCuadrados')">Centros Cuadrados</a>
+    <a id="congruencial" onclick="set('congruencial')">Congruencial</a onclick="set('centrosCuadrados')">
+    <a id="congruencialMixto" onclick="set('congruencialMixto')">Congruencial Mixto</a>
+    <a id="multiplicativo" onclick="set('multiplicativo')">Multiplicativo</a>
+    <a id="congruencialLineal" onclick="set('congruencialLineal')">Congruencial lineal Combinado</a>
+  </div>
+  <form id="centrosCuadradosForm">
+    <input type="number" name="numbers" placeholder="Valor Inicial">
+    <input type="number" name="numbers" placeholder="Cuantos numeros random requieres">
+    <input id="submit" type="button" value="Generar">
+  </form>
+  <form id="congruencialForm">
+    <div class="flex container">
+      <input type="number" class="quarter" name="numbers" placeholder="Valor Inicial">
+      <input type="number" class="quarter" name="numbers" placeholder="A">
+      <input type="number" class="quarter" name="numbers" placeholder="C">
+      <input type="number" class="quarter" name="numbers" placeholder="M">
+    </div>
+    <input type="number" name="numbers" placeholder="Cuantos numeros random requieres">
+    <input id="submit" type="button" value="Generar">
+  </form>
+  <form id="congruencialMixtoForm">
+    <div class="flex container">
+      <input type="number" class="quarter" name="numbers" placeholder="Valor Inicial">
+      <input type="number" class="quarter" name="numbers" placeholder="A">
+      <input type="number" class="quarter" name="numbers" placeholder="C">
+      <input type="number" class="quarter" name="numbers" placeholder="M">
+    </div>
+    <input type="number" name="numbers" placeholder="Cuantos numeros random requieres">
+    <input id="submit" type="button" value="Generar">
+  </form>
+  <form id="multiplicativoForm">
+    <div class="flex container">
+      <input type="number" class="quarter" name="numbers" placeholder="Valor Inicial">
+      <input type="number" class="quarter" name="numbers" placeholder="A">
+      <input type="number" class="quarter" name="numbers" placeholder="C">
+      <input type="number" class="quarter" name="numbers" placeholder="M">
+    </div>
+    <input type="number" name="numbers" placeholder="Cuantos numeros random requieres">
+    <input id="submit" type="button" value="Generar">
+  </form>
+  <form id="congruencialLinealForm">
+    <p>Generador 1</p>
+    <div class="flex container">
+      <input type="number" class="quarter" name="numbers" placeholder="Valor Inicial">
+      <input type="number" class="quarter" name="numbers" placeholder="A">
+      <input type="number" class="quarter" name="numbers" placeholder="C">
+      <input type="number" class="quarter" name="numbers" placeholder="M">
+    </div>
+    <p>Generador 2</p>
+    <div class="flex container">
+      <input type="number" class="quarter" name="numbers" placeholder="Valor Inicial">
+      <input type="number" class="quarter" name="numbers" placeholder="A">
+      <input type="number" class="quarter" name="numbers" placeholder="C">
+      <input type="number" class="quarter" name="numbers" placeholder="M">
+    </div>
+    <input type="number" name="numbers" placeholder="Cuantos numeros random requieres">
+    <input id="submit" type="button" value="Generar">
+  </form>
+</body>
+
 </html>

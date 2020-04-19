@@ -1,0 +1,264 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+
+
+body {
+  background-color: #252526;
+}
+
+header {
+  background-color: #1e1e1e;
+  height: 60px;
+}
+
+h1 {
+  line-height: 60px;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+  font-family: "Lato", sans-serif;
+}
+
+.flex {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
+a {
+  text-align: center;
+  padding: 10px;
+  padding-top: 50px;
+  width: 15%;
+  height: 70px;
+  background-color: #333333;
+  font-family: "Lato", sans-serif;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.4s all ease;
+  margin-bottom: 60px;
+}
+
+a.active{
+    background-color: teal;
+
+}
+
+a:hover {
+
+  -webkit-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.75);
+  background-color: teal
+}
+
+input{
+    display: block;
+    margin: 0 auto;
+    margin-top: 20px;
+    width: 65vw;
+    background-color: #333333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    line-height: 40px;
+    font-size: 18px;
+    text-align: center;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
+}
+
+#submit{
+    background-color: teal;
+    cursor: pointer;
+
+}
+
+#centrosCuadradosForm,
+#congruencialForm,
+#congruencialMixtoForm,
+#multiplicativoForm,
+#congruencialLinealForm{
+    display: none;
+}
+
+.active{
+    display: block !important;
+}
+
+.container{
+    width: 65vw;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+.quarter{
+    width: 23%;
+    margin: 0;
+    margin-top: 10px;
+
+}
+
+p{
+    width: 65vw;
+    display: block;
+    margin: 0 auto;
+    margin-top: 10px;
+    color: rgba(255,255,255,.3);
+    font-family: "Lato", sans-serif;
+}
+
+.names{
+    width: 80vw;
+    margin: 20px auto;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.names div{
+    width: 20%;
+}
+
+.names div p{
+    display: block;
+    width: 100%;
+    font-size: 10px;
+    text-align: center;
+    transition: 1s ease all;
+}
+
+.names div:hover p{
+    color: white;
+}
