@@ -62,7 +62,7 @@ const linearCongruentialMethodGenerator = (previous, a, c, m) => {
 /* linearCongruentialMethod(4, 5, 7, 8, 8)); */
 
 /* Multiplicative Congruential Method */
-const multiplicativeCongruentialMethod = (a, xi, m, n) => {
+const multiplicativeCongruentialMethod = (xi, a, m, n) => {
     const randomNumbers = [];
     for (i = 0; i < n; i++) {
         let xn = (a * xi) % m;

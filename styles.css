@@ -128,8 +128,6 @@ table {
   border-spacing: 0;
 }
 
-
-
 body {
   background-color: #252526;
 }
@@ -168,97 +166,119 @@ a {
   margin-bottom: 60px;
 }
 
-a.active{
-    background-color: teal;
-
+a.active {
+  background-color: teal;
 }
 
 a:hover {
-
   -webkit-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.75);
-  background-color: teal
+  background-color: teal;
 }
 
-input{
-    display: block;
-    margin: 0 auto;
-    margin-top: 20px;
-    width: 65vw;
-    background-color: #333333;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 5px 10px;
-    line-height: 40px;
-    font-size: 18px;
-    text-align: center;
-    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
-    box-sizing: border-box;         /* Opera/IE 8+ */
+input {
+  display: block;
+  margin: 0 auto;
+  margin-top: 20px;
+  width: 65vw;
+  background-color: #333333;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  line-height: 40px;
+  font-size: 18px;
+  text-align: center;
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box; /* Firefox, other Gecko */
+  box-sizing: border-box; /* Opera/IE 8+ */
 }
 
-#submit{
-    background-color: teal;
-    cursor: pointer;
-
+#submit {
+  background-color: teal;
+  cursor: pointer;
 }
 
 #centrosCuadradosForm,
 #congruencialForm,
 #congruencialMixtoForm,
 #multiplicativoForm,
-#congruencialLinealForm{
-    display: none;
+#congruencialLinealForm {
+  display: none;
 }
 
-.active{
-    display: block !important;
+.active {
+  display: block !important;
 }
 
-.container{
-    width: 65vw;
-    display: flex;
-    justify-content: space-between;
-    margin: 0 auto;
+.container {
+  width: 65vw;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
 }
-.quarter{
-    width: 23%;
-    margin: 0;
-    margin-top: 10px;
+.quarter {
+  width: 23%;
+  margin: 0;
+  margin-top: 10px;
+}
+.third {
+  width: 30%;
+  margin: 0;
+  margin-top: 10px;
+}
+
+p {
+  width: 65vw;
+  display: block;
+  margin: 0 auto;
+  margin-top: 10px;
+  color: rgba(255, 255, 255, 0.3);
+  font-family: "Lato", sans-serif;
+}
+
+.names {
+  width: 80vw;
+  margin: 20px auto;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+.names div {
+  width: 20%;
+}
+
+.names div p {
+  display: block;
+  width: 100%;
+  font-size: 10px;
+  text-align: center;
+  transition: 1s ease all;
+}
+
+.names div:hover p {
+  color: white;
+}
+
+#random {
+  display: flex;
+  flex-wrap: wrap;
+  width: 65vw;
+  margin: 20px auto;
+}
+
+#random span {
+  color: white;
+  font-size: 18px;
+  line-height: 60px;
+  font-family: "Lato", sans-serif;
+  width: 20%;
+  text-align: center;
 
 }
 
-p{
-    width: 65vw;
-    display: block;
-    margin: 0 auto;
-    margin-top: 10px;
-    color: rgba(255,255,255,.3);
-    font-family: "Lato", sans-serif;
-}
-
-.names{
-    width: 80vw;
-    margin: 20px auto;
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 40px;
-}
-
-.names div{
-    width: 20%;
-}
-
-.names div p{
-    display: block;
-    width: 100%;
-    font-size: 10px;
-    text-align: center;
-    transition: 1s ease all;
-}
-
-.names div:hover p{
-    color: white;
+#random span:nth-child(2n + 1) {
+  background-color: rgb(51, 51, 51, 0.15);
 }
