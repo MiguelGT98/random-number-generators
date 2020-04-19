@@ -175,49 +175,67 @@ console.log(combinedLinearCongruentialMethod(g, 15, 7));
 */
 
 
-const ksTest = (sampleData, n, criticValue) => {
-        // Sort from lowest to highest
-        sampleData.sort(function(a, b) { return a - b });
+const ksTest = (sampleData, alpha) => {
 
-        // Define all the arrays for the calculation table
-        var avgPerPosition = Array(n);
-        var dPlus = Array(n);
-        var dMinus = Array(n);
+    // N elements in the sample data
+    var n = sampleData.length;
 
-        // Maximum values inside arrays for comparing the final max value with the critic value
-        var dPlusMax;
-        var dMinusMax;
-        var finalMax;
+    // Harcoded dictionary for the critic values
+    var criticValues = {
+        '0.001': [NaN, 0.97764, 0.92063, 0.85046, 0.78137, 0.72479, 0.6793, 0.64098, 0.06846, 0.58042, 0.55588, 0.53422, 0.51490, 0.49753, 0.48182, 0.4675, 0.4544, 0.44234, 0.43119, 0.42085],
+        '0.01': [0.995, 0.9293, 0.829, 0.73421, 0.66855, 0.6166, 0.5758, 0.5418, 0.5133, 0.48895, 0.4677, 0.44905, 0.43246, 0.4176, 0.4042, 0.392, 0.38085, 0.37063, 0.36116, 0.3524],
+        '0.02': [0.99, 0.9, 0.78456, 0.68887, 0.62718, 0.57741, 0.53844, 0.50654, 0.4796, 0.45662, 0.4367, 0.41918, 0.40362, 0.3897, 0.37713, 0.36701, 0.35528, 0.34569, 0.33685, 0.32866],
+        '0.05': [0.975, 0.84189, 0.7076, 0.62394, 0.56327, 0.51926, 0.48343, 0.45427, 0.43001, 0.40925, 0.39122, 0.37543, 0.36143, 0.3489, 0.3376, 0.32733, 0.31796, 0.30936, 0.30142, 0.29407],
+        '0.1': [0.95, 0.77369, 0.63604, 0.56522, 0.50945, 0.46799, 0.43607, 0.40962, 0.38746, 0.36866, 0.35242, 0.33815, 0.32548, 0.31417, 0.30397, 0.29471, 0.28627, 0.27851, 0.27135, 0.26473],
+        '0.15': [0.925, 0.72614, 0.59582, 0.52476, 0.47439, 0.43526, 0.40497, 0.38062, 0.36006, 0.3425, 0.32734, 0.31408, 0.30233, 0.29181, 0.28233, 0.27372, 0.26587, 0.25867, 0.25202, 0.24587],
+        '0.2': [0.9, 0.68377, 0.56481, 0.49265, 0.44697, 0.41035, 0.38145, 0.35828, 0.33907, 0.32257, 0.30826, 0.29573, 0.28466, 0.27477, 0.26585, 0.25774, 0.25035, 0.24356, 0.23731, 0.23152]
+    };
 
-        // Detection for missing data and stopping the test
-        var error = 0;
+    // Critic value for the model based on the number of elements in the sample data and the alpha value
+    var criticValue = criticValues[alpha][n - 1];
 
-        for (i = 0; i < n; i++) {
-            if ((!isNaN(parseFloat(sampleData[i].value)))) {
-                alert("Data entry error");
-                e++;
-                return false;
-            }
-            avgPerPosition.push(parseFloat(i + 1 / sampleData[i].value));
-            dPlus.push(avgPerPosition[i] - sampleData[i].value);
-            dMinus.push(sampleData[i].value - i / sampleData[i].value);
-        }
+    // Sort from lowest to highest
+    sampleData.sort(function(a, b) { return a - b });
 
-        if (e > 0) {
+    // Define all the arrays for the calculation table
+    var avgPerPosition = Array(n);
+    var dPlus = Array(n);
+    var dMinus = Array(n);
+
+    // Maximum values inside arrays for comparing the final max value with the critic value
+    var dPlusMax;
+    var dMinusMax;
+    var finalMax;
+
+    // Detection for missing data and stopping the test
+    var error = 0;
+
+    for (i = 0; i < n; i++) {
+        if ((!isNaN(parseFloat(sampleData[i].value)))) {
             alert("Data entry error");
+            e++;
             return false;
         }
+        avgPerPosition.push(parseFloat(i + 1 / sampleData[i].value));
+        dPlus.push(avgPerPosition[i] - sampleData[i].value);
+        dMinus.push(sampleData[i].value - i / sampleData[i].value);
+    }
 
-        dPlusMax = Math.max(...dPlus);
-        dMinusMax = Math.max(...dMinus);
+    if (e > 0) {
+        alert("Data entry error");
+        return false;
+    }
 
-        finalMax = Math.max(dPlusMax, dMinusMax);
+    dPlusMax = Math.max(...dPlus);
+    dMinusMax = Math.max(...dMinus);
 
-        if (finalMax <= criticValue) {
-            print("The hypothesis is not rejected, since " + finalMax + " is less or equal than the critic value " + criticValue);
-            return true;
-        } else {
-            print("The hypothesis is rejected, since " + finalMax + " is higher than the critic value " + criticValue);
-            return false;
-        }
-    } //function closing
+    finalMax = Math.max(dPlusMax, dMinusMax);
+
+    if (finalMax <= criticValue) {
+        print("The hypothesis is not rejected, since " + finalMax + " is less or equal than the critic value " + criticValue);
+        return true;
+    } else {
+        print("The hypothesis is rejected, since " + finalMax + " is higher than the critic value " + criticValue);
+        return false;
+    }
+}; //function closing
