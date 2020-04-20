@@ -53,15 +53,16 @@ function set(method) {
 
 function generateRandomds(method) {
   let form;
-  let randomTable = document.getElementById("random");
   randomNumbers = [];
-  randomTable.innerHTML = "";
+
   switch (method) {
     case "centrosCuadrados":
       form = document.getElementById("centrosCuadradosForm");
       x0 = parseInt(form.elements.namedItem("x0").value);
       n = parseInt(form.elements.namedItem("numbers").value);
       randomNumbers = middleSquareMethod(x0, n);
+
+      displayRandomNumbers(randomNumbers);
       break;
     case "congruencial":
       form = document.getElementById("congruencialForm");
@@ -72,6 +73,8 @@ function generateRandomds(method) {
       n = parseInt(form.elements.namedItem("numbers").value);
 
       randomNumbers = linearCongruentialMethod(x0, a, c, m, n);
+      displayRandomNumbers(randomNumbers);
+
       alpha = form.elements.namedItem("alpha").value;
       form.elements.namedItem("ks").classList.remove("correct");
       form.elements.namedItem("ks").classList.remove("incorrect");
@@ -99,11 +102,14 @@ function generateRandomds(method) {
       m = parseInt(form.elements.namedItem("m").value);
       n = parseInt(form.elements.namedItem("numbers").value);
       randomNumbers = mixedLinearCongruentialMethod(x0, a, c, m, n);
+
       alpha = form.elements.namedItem("alpha").value;
       if (randomNumbers == -1) {
         randomNumbers = [];
         alert("No cumple HullDobell");
       } else {
+        displayRandomNumbers(randomNumbers);
+
         if (ksTest(randomNumbers, alpha)) {
           form.elements.namedItem("ks").classList.add("correct");
         } else {
@@ -126,6 +132,8 @@ function generateRandomds(method) {
       n = parseInt(form.elements.namedItem("numbers").value);
       alpha = form.elements.namedItem("alpha").value;
       randomNumbers = multiplicativeCongruentialMethod(x0, a, m, n);
+      displayRandomNumbers(randomNumbers);
+
       if (ksTest(randomNumbers, alpha)) {
         form.elements.namedItem("ks").classList.add("correct");
       } else {
@@ -158,14 +166,20 @@ function generateRandomds(method) {
         { parameters: { seed: x02, a: a2, c: c2, m: m2 } },
       ];
       randomNumbers = combinedLinearCongruentialMethod(g, n, n2);
+      displayRandomNumbers(randomNumbers);
+
       break;
   }
-  //console.log(randomNumbers);
+
+  return false;
+}
+
+function displayRandomNumbers(randomNumbers) {
+  let randomTable = document.getElementById("random");
+  randomTable.innerHTML = "";
   let htmlString = "";
   for (let n of randomNumbers) {
     htmlString = `${htmlString}<span>${n.toFixed(5)}</span>`;
   }
   randomTable.innerHTML = htmlString;
-
-  return false;
 }
