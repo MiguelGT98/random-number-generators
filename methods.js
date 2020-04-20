@@ -176,6 +176,162 @@ const combinedLinearCongruentialMethod = (generators, n, lastMod) => {
 // console.log(combinedLinearCongruentialMethod(g, 15, 7));
 
 const chiSquareTest = (randomNumbers, alpha) => {
+  let criticValues = {
+    "0.001": [
+      10.82757,
+      13.81551,
+      16.26624,
+      18.46683,
+      20.51501,
+      22.45774,
+      24.32189,
+      26.12448,
+      27.87716,
+      29.5883,
+      31.26413,
+      32.90949,
+      34.52818,
+      36.12327,
+      37.6973,
+      39.25235,
+      40.79022,
+      42.3124,
+      43.8202,
+      45.31475,
+    ],
+    "0.01": [
+      6.6349,
+      9.21034,
+      11.34487,
+      13.2767,
+      15.08627,
+      16.81189,
+      18.47531,
+      20.09024,
+      21.66599,
+      23.20925,
+      24.72497,
+      26.21697,
+      27.68825,
+      29.14124,
+      30.57791,
+      31.99993,
+      33.40866,
+      34.80531,
+      36.19087,
+      37.56623,
+    ],
+    "0.02": [
+      5.41189,
+      7.82405,
+      9.83741,
+      11.66784,
+      13.38822,
+      15.03321,
+      16.62242,
+      18.16823,
+      19.67902,
+      21.16077,
+      22.61794,
+      24.05396,
+      25.47151,
+      26.87276,
+      28.2595,
+      29.63318,
+      30.99505,
+      32.34616,
+      33.68743,
+      35.01963,
+    ],
+    "0.05": [
+      3.84146,
+      5.99146,
+      7.81473,
+      9.48773,
+      11.0705,
+      12.59159,
+      14.06714,
+      15.50731,
+      16.91898,
+      18.30704,
+      19.67514,
+      21.02607,
+      22.36203,
+      23.68479,
+      24.99579,
+      26.29623,
+      27.58711,
+      28.8693,
+      30.14353,
+      31.41043,
+    ],
+    "0.1": [
+      2.70554,
+      4.60517,
+      6.25139,
+      7.77944,
+      9.23636,
+      10.64464,
+      12.01704,
+      13.36157,
+      14.68366,
+      15.98718,
+      17.27501,
+      18.54935,
+      19.81193,
+      21.06414,
+      22.30713,
+      23.54183,
+      24.76904,
+      25.98942,
+      27.20357,
+      28.41198,
+    ],
+    "0.15": [
+      2.07225,
+      3.79424,
+      5.31705,
+      6.74488,
+      8.1152,
+      9.4461,
+      10.7479,
+      12.02707,
+      13.28804,
+      14.53394,
+      15.7671,
+      16.98931,
+      18.20198,
+      19.40624,
+      20.60301,
+      21.79306,
+      22.97703,
+      24.15547,
+      25.32885,
+      26.49758,
+    ],
+    "0.2": [
+      1.64237,
+      3.21888,
+      4.64163,
+      5.98862,
+      7.28928,
+      8.55806,
+      9.80325,
+      11.03009,
+      12.24215,
+      13.44196,
+      14.63142,
+      15.81199,
+      16.9848,
+      18.15077,
+      19.31066,
+      20.46508,
+      21.61456,
+      22.75955,
+      23.90042,
+      25.03751,
+    ],
+  };
   randomNumbers.sort(function (a, b) {
     return a - b;
   });
@@ -196,6 +352,7 @@ const chiSquareTest = (randomNumbers, alpha) => {
     }
   }
   observedArray.push(observed);
+
   for (let obs of observedArray) {
     let expected = randomNumbers.length / observedArray.length;
     let residual = obs - expected;
@@ -203,22 +360,19 @@ const chiSquareTest = (randomNumbers, alpha) => {
     chiSquareResult = chiSquare + chiSquareResult;
   }
 
+
   //p = probabilidad de que sea aceptada esta vaina
   // p <= alpha la hipotesis es rechazada
-  let p = 0;
   if (observedArray.length > 1) {
-    p = pchisq(chiSquareResult, observedArray.length - 1);
-    console.log("P:", p);
-  } else {
-    p = 0;
-  }
+    if(chiSquareResult<criticValues[alpha][observedArray.length - 1]){
+      return true
+    }
 
-  if (p <= alpha) {
-    return false;
+    // p = pchisq(chiSquareResult, observedArray.length - 1);
+    // console.log("P:", p);
   }
-  return true;
+  return false;
 };
-
 //Para que no usemos tablas uwu
 function pchisq(chi2, n) {
   return gammq(n, 0.5 * chi2);
@@ -682,15 +836,15 @@ const ksTest = (sampleData, alpha) => {
     "0.1": 1.22385,
     "0.15": 1.13795,
     "0.2": 1.07275,
-  }
+  };
 
   // Critic value for the model based on the number of elements in the sample data and the alpha value
 
   let criticValue = criticValues[alpha][n - 1];
-  if(n<50){
-    criticValue = criticValues[alpha][n - 1]
-  }else{
-    criticValue = criticValuesOverflow[alpha]/Math.sqrt(n)
+  if (n < 50) {
+    criticValue = criticValues[alpha][n - 1];
+  } else {
+    criticValue = criticValuesOverflow[alpha] / Math.sqrt(n);
   }
   // Sort from lowest to highest
   sampleData.sort(function (a, b) {

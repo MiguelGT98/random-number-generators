@@ -73,6 +73,11 @@ function generateRandomds(method) {
 
       randomNumbers = linearCongruentialMethod(x0, a, c, m, n);
       alpha = form.elements.namedItem("alpha").value;
+      form.elements.namedItem("ks").classList.remove("correct");
+      form.elements.namedItem("ks").classList.remove("incorrect");
+      form.elements.namedItem("chi").classList.remove("correct");
+      form.elements.namedItem("chi").classList.remove("incorrect");
+
 
       if (ksTest(randomNumbers, alpha)) {
         form.elements.namedItem("ks").classList.add("correct");
