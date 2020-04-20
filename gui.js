@@ -104,6 +104,10 @@ function generateRandomds(method) {
       randomNumbers = mixedLinearCongruentialMethod(x0, a, c, m, n);
 
       alpha = form.elements.namedItem("alpha").value;
+      form.elements.namedItem("ks").classList.remove("correct");
+      form.elements.namedItem("ks").classList.remove("incorrect");
+      form.elements.namedItem("chi").classList.remove("correct");
+      form.elements.namedItem("chi").classList.remove("incorrect");
       if (randomNumbers == -1) {
         randomNumbers = [];
         alert("No cumple HullDobell");
@@ -131,6 +135,10 @@ function generateRandomds(method) {
       m = parseInt(form.elements.namedItem("m").value);
       n = parseInt(form.elements.namedItem("numbers").value);
       alpha = form.elements.namedItem("alpha").value;
+      form.elements.namedItem("ks").classList.remove("correct");
+      form.elements.namedItem("ks").classList.remove("incorrect");
+      form.elements.namedItem("chi").classList.remove("correct");
+      form.elements.namedItem("chi").classList.remove("incorrect");
       randomNumbers = multiplicativeCongruentialMethod(x0, a, m, n);
       displayRandomNumbers(randomNumbers);
 
